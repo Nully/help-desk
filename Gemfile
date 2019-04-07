@@ -46,6 +46,7 @@ gem 'materialize-sass'
 gem 'material_icons' 
 gem 'mysql2', '~> 0.4.4'
 
+gem 'search_cop'
 gem 'simple_form'
 
 group :development, :test do

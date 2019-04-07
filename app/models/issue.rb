@@ -2,6 +2,7 @@
 
 class Issue < ApplicationRecord
   include AASM
+  include SearchCop
 
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
 
@@ -27,5 +28,10 @@ class Issue < ApplicationRecord
     event :close do
       transitions from: :discussing, to: :closed
     end
+  end
+
+  search_scope :search do
+    attributes :title, :content
+    attributes comment: ['comments.content']
   end
 end

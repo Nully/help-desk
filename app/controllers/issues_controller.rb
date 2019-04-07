@@ -45,6 +45,10 @@ class IssuesController < ApplicationController
     @issues = IssueDecorator.decorate_collection(
       Issue.all.order(updated_at: :desc).page(params[:page])
     )
+
+    if params[:search].present?
+      @issues = @issues.search(params[:search])
+    end
   end
 
   # Build a new Issue instance
