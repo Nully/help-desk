@@ -1,6 +1,7 @@
 class IssuesController < ApplicationController
   before_action :build_issues, only: :index
   before_action :build_issue, onlye: :new
+  before_action :find_issue, only: :show
 
   def index
   end
@@ -32,5 +33,9 @@ class IssuesController < ApplicationController
   # Build a new Issue instance
   def build_issue
     @issue = Issue.new
+  end
+
+  def find_issue
+    @issue = Issue.find(params[:id]).decorate
   end
 end

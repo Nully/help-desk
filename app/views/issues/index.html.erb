@@ -22,7 +22,9 @@
                 <%- @issues.each do |issue| %>
                     <tr>
                         <td><%= issue.id %></td>
-                        <td><%= issue.title %></td>
+                        <td><%= link_to issue_path(issue) do %>
+                            <%= issue.title %>
+                        <%- end %></td>
                         <td>aaaa</td>
                         <td>1</td>
                     </tr>
