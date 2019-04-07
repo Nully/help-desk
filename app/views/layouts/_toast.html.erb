@@ -1,0 +1,9 @@
+<script type="text/javascript">
+<%- if flash[:success] %>
+    M.toast({ html: '<%= flash[:success].html_safe %>' })
+<%- elsif flash[:notice] %>
+    M.toast({ html: '<%= flash[:notice].join("<br />").html_safe %>' })
+<%- elsif flash[:error] %>
+    M.toast({ html: '<%= flash[:error].join("<br />").html_safe %>' })
+<%- end %>
+</script>

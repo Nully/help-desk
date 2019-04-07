@@ -14,18 +14,20 @@ class IssuesController < ApplicationController
   def create
     @issue = Issue.new(permitted_params)
     unless @issue.valid?
+      flash[:error] = @issue.errors.full_messages
       return render :new
     end
 
     @issue.save!
 
-    redirect_to issues_path, success: '質問を登録しました。'
+    flash[:success] = '質問を登録しました'
+    redirect_to issues_path
   end
 
   private
 
   def permitted_params
-    params.require(:issue).permit(:title, :content)
+    params.require(:issue).permit(:email, :title, :content)
   end
 
   def build_issues

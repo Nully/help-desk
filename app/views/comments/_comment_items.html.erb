@@ -1,9 +1,11 @@
-<%- if comments.length <= 0 %>
-    <p class="center">回答はまだありません。</p>
-<%- else %>
-    <%- comments.each do |comment| %>
-        <div class="cols 12">
-            <%= render 'comments/comment_item', comment: comment %>
-        </div>
+<div class="row">
+    <%- if comments.length <= 0 %>
+        <p class="center">回答はまだありません。</p>
+    <%- else %>
+        <%- comments.each do |comment| %>
+            <div class="col s12">
+                <%= render 'comments/comment_item', comment: comment %>
+            </div>
+        <%- end %>
     <%- end %>
-<%- end %>
+</div>

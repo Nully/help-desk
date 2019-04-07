@@ -3,17 +3,19 @@ class CommentsController < ApplicationController
     @comment = Comment.new(permitted_params)
 
     unless @comment.valid?
-      return redirect_to(issue_path(id: permitted_params[:issue_id]), error: '回答を登録できませんでした')
+      flash[:erorr] = @comment.errors.full_messages
+      return redirect_to(issue_path(id: permitted_params[:issue_id]))
     end
 
     @comment.save!
 
-    redirect_to issue_path(id: @comment.issue_id), success: '回答を登録しました'
+    flash[:success] = '回答を登録しました'
+    redirect_to issue_path(id: @comment.issue_id)
   end
 
   private
 
   def permitted_params
-    params.require(:comment).permit(:issue_id, :content)
+    params.require(:comment).permit(:issue_id, :email, :content)
   end
 end

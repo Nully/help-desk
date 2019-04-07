@@ -1,8 +1,13 @@
 <div class="row">
-    <h5>回答を書く</h5>
+    <div class="col s12">
+        <h5>回答を書く</h5>
+    </div>
     <%= simple_form_for @comment do |f| %>
         <%= f.input(:issue_id, as: :hidden, input_html: { value: issue_id }) if issue_id.present? %>
-        <div class="col s9">
+        <div class="col s3">
+            <%= f.input :email, label: 'メールアドレス' %>
+        </div>
+        <div class="col s6">
             <%= f.input :content, label: '回答内容', input_html: { class: %(materialize-textarea) }%>
         </div>
         <div class="col s3">
@@ -13,5 +18,3 @@
         </div>
     <%- end %>
 </div>
-
-

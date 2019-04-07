@@ -2,6 +2,8 @@
     <div class="col s12">
         <h3>質問を登録</h3>
         <%= simple_form_for @issue do |f |%>
+            <%= f.input :email, label: 'メールアドレス' %>
+
             <%= f.input :title, label: 'タイトル' %>
 
             <%= f.input :content, label: '質問内容', input_html: { class: %(materialize-textarea) } %>
