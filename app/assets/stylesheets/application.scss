@@ -15,5 +15,5 @@
  */
 @import "https://fonts.googleapis.com/icon?family=Material+Icons";
 @import "materialize/components/color-variables";
-$primary-color: color('red', 'lighten-1') !default;
+$primary-color: color('red', 'darken-1') !default;
 @import 'materialize';
