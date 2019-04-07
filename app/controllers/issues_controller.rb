@@ -1,4 +1,5 @@
 class IssuesController < ApplicationController
+  before_action :build_issues, only: :index
   before_action :build_issue, onlye: :new
 
   def index
@@ -22,6 +23,10 @@ class IssuesController < ApplicationController
 
   def permitted_params
     params.require(:issue).permit(:title, :content)
+  end
+
+  def build_issues
+    @issues = Issue.all.order(updated_at: :desc).page(params[:page])
   end
 
   # Build a new Issue instance

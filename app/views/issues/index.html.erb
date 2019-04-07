@@ -7,5 +7,30 @@
             <i class="small material-icons left">add</i>新規登録
         <% end %>
     </div>
+
+    <div class="col s12">
+        <table class="striped">
+            <thead>
+                <tr>
+                    <th>No</th>
+                    <th>質問事項</th>
+                    <th>ステータス</th>
+                    <th>回答数</th>
+                </tr>
+            </thead>
+            <tbody>
+                <%- @issues.each do |issue| %>
+                    <tr>
+                        <td><%= issue.id %></td>
+                        <td><%= issue.title %></td>
+                        <td>aaaa</td>
+                        <td>1</td>
+                    </tr>
+                <% end %>
+            </tbody>
+        </table>
+
+        <%= paginate @issues %>
+    </div>
 </div>
 
