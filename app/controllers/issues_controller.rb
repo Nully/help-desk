@@ -31,7 +31,9 @@ class IssuesController < ApplicationController
   end
 
   def build_issues
-    @issues = Issue.all.order(updated_at: :desc).page(params[:page])
+    @issues = IssueDecorator.decorate_collection(
+      Issue.all.order(updated_at: :desc).page(params[:page])
+    )
   end
 
   # Build a new Issue instance

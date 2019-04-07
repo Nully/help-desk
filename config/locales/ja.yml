@@ -1,0 +1,7 @@
+ja:
+  aasm_state:
+    issue:
+      issue_state:
+        opening: オープン
+        discussing: 進行中
+        closed: クローズ

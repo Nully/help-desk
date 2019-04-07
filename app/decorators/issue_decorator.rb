@@ -5,6 +5,10 @@ class IssueDecorator < Draper::Decorator
     ApplicationController.helpers.simple_format(object.content)
   end
 
+  def issue_state
+    I18n.t("aasm_state.issue.issue_state.#{object.issue_state}")
+  end
+
   def created_at
     I18n.l(object.created_at, format: :long)
   end

@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class Issue < ApplicationRecord
+  include AASM
+
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
 
   has_many :comments
@@ -8,4 +10,22 @@ class Issue < ApplicationRecord
   validates :title, presence: true, length: { maximum: 255, minimum: 1 }
   validates :content, presence: true
   validates :email, presence: true, format: { with: VALID_EMAIL_REGEX }
+
+  aasm column: :issue_state do
+    state :opening, initial: true
+    state :discussing
+    state :closed
+
+    event :open do
+      transitions from: :closed, to: :opening
+    end
+
+    event :discuss do
+      transitions from: :opening, to: :discussing
+    end
+
+    event :close do
+      transitions from: :discussing, to: :closed
+    end
+  end
 end
