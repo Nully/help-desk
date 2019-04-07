@@ -1,0 +1,7 @@
+<div class="section">
+    <h4>回答一覧</h4>
+    <div class="divider"></div>
+    <%= render 'comments/comment_items', comments: @comments %>
+
+    <%= render 'comments/form', issue_id: @issue.id %>
+</div>

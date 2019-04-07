@@ -1,0 +1,17 @@
+<div class="row">
+    <h5>回答を書く</h5>
+    <%= simple_form_for @comment do |f| %>
+        <%= f.input(:issue_id, as: :hidden, input_html: { value: issue_id }) if issue_id.present? %>
+        <div class="col s9">
+            <%= f.input :content, label: '回答内容', input_html: { class: %(materialize-textarea) }%>
+        </div>
+        <div class="col s3">
+            <%= f.button :button, class: %(waves-effect waves-light btn right) do %>
+                <i class="material-icons left small">create</i>
+                回答を登録
+            <%- end %>
+        </div>
+    <%- end %>
+</div>
+
+

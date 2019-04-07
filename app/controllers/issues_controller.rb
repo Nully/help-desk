@@ -1,7 +1,9 @@
 class IssuesController < ApplicationController
   before_action :build_issues, only: :index
   before_action :build_issue, onlye: :new
+  before_action :build_comment, only: :show
   before_action :find_issue, only: :show
+  before_action :find_comments, only: :show
 
   def index
   end
@@ -35,7 +37,17 @@ class IssuesController < ApplicationController
     @issue = Issue.new
   end
 
+  def build_comment
+    @comment = Comment.new
+  end
+
   def find_issue
     @issue = Issue.find(params[:id]).decorate
+  end
+
+  def find_comments
+    @comments = CommentDecorator.decorate_collection(
+      @issue.comments
+    )
   end
 end

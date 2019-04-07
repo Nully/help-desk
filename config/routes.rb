@@ -3,4 +3,6 @@ Rails.application.routes.draw do
   get '/', controller: 'issues', action: :index
 
   resources :issues
+
+  resources :comments, only: [:create]
 end

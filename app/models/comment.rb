@@ -3,5 +3,5 @@
 class Comment < ApplicationRecord
   belongs_to :issue, inverse_of: :comments
 
-  validates :content, precense: true
+  validates :content, presence: true
 end

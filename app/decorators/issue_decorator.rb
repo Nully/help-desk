@@ -2,7 +2,7 @@ class IssueDecorator < Draper::Decorator
   delegate_all
 
   def content
-    object.content.gsub("\n", '<br />').html_safe
+    ApplicationController.helpers.simple_format(object.content)
   end
 
   def created_at
