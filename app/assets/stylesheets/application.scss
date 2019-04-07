@@ -13,6 +13,7 @@
  *= require_tree .
  *= require_self
  */
-@import 'matelialize/components/color'
+@import "https://fonts.googleapis.com/icon?family=Material+Icons";
+@import "materialize/components/color-variables";
 $primary-color: color('red', 'lighten-1') !default;
 @import 'materialize';
