@@ -3,7 +3,7 @@ class CommentsController < ApplicationController
     @comment = Comment.new(permitted_params)
 
     unless @comment.valid?
-      return render(:show)
+      return redirect_to(issue_path(id: permitted_params[:issue_id]), error: '回答を登録できませんでした')
     end
 
     @comment.save!
