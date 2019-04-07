@@ -2,7 +2,7 @@ class IssuesController < ApplicationController
   before_action :build_issues, only: :index
   before_action :build_issue, onlye: :new
   before_action :build_comment, only: :show
-  before_action :find_issue, only: :show
+  before_action :find_issue, only: %i[show update]
   before_action :find_comments, only: :show
 
   def index
@@ -22,6 +22,17 @@ class IssuesController < ApplicationController
 
     flash[:success] = '質問を登録しました'
     redirect_to issues_path
+  end
+
+  def update
+
+    unless @issue.update(issue_state: params[:issue_state])
+      flash[:error] = ['ステータスの更新に失敗しました']
+    else
+      flash[:success] = 'ステータスを更新しました'
+    end
+
+    redirect_to issue_path(id: params[:id])
   end
 
   private

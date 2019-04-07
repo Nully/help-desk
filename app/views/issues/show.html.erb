@@ -22,6 +22,7 @@
 
 <div class="row">
     <%= render 'comments/comment_list', comments: @comments %>
+    <%= render('comments/form', issue_id: @issue.id) unless @issue.closed? %>
 </div>
 
 <div class="row">
@@ -35,3 +36,36 @@
     </div>
 </div>
 
+<%- unless @issue.closed? %>
+<div class="fixed-action-btn">
+    <a class="btn-floating btn-large red">
+        <i class="large material-icons">style</i>
+    </a>
+    <ul>
+        <li>
+            <%= link_to issue_path(@issue, issue_state: :closed), class: %(btn-floating gray tooltipped), data: { tooltip: '質問をクローズ', method: 'put' } do %>
+                <i class="small material-icons">close</i>
+            <% end %>
+        </li>
+        <li>
+            <%= link_to issue_path(@issue, issue_state: :discussing), class: %(btn-floating blue tooltipped), data: { tooltip: 'ディスカッション開始', method: 'put' } do %>
+                <i class="small material-icons">record_voice_over</i>
+            <% end %>
+        </li>
+    </ul>
+</div>
+
+<script type="text/javascript">
+document.addEventListener('DOMContentLoaded', function() {
+    var elems = document.querySelectorAll('.fixed-action-btn');
+    var instances = M.FloatingActionButton.init(elems, {
+        direction: 'top'
+    });
+
+    var elems = document.querySelectorAll('.tooltipped');
+    var instances = M.Tooltip.init(elems, {
+        position: 'left'
+    });
+});
+</script>
+<%- end %>

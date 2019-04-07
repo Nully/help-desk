@@ -35,14 +35,13 @@
     </div>
 </div>
 
-
 <div class="fixed-action-btn">
     <a class="btn-floating btn-large red">
         <i class="large material-icons">add</i>
     </a>
     <ul>
         <li>
-            <%= link_to new_issue_path, class: %(btn-floating green) do %>
+            <%= link_to new_issue_path, class: %(btn-floating green tooltipped), data: { tooltip: '質問を登録' } do %>
                 <i class="small material-icons">create</i>
             <% end %>
         </li>
@@ -54,6 +53,11 @@ document.addEventListener('DOMContentLoaded', function() {
     var elems = document.querySelectorAll('.fixed-action-btn');
     var instances = M.FloatingActionButton.init(elems, {
         direction: 'top'
+    });
+
+    var elems = document.querySelectorAll('.tooltipped');
+    var instances = M.Tooltip.init(elems, {
+        position: 'left'
     });
 });
 </script>
