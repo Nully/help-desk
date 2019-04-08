@@ -9,6 +9,9 @@ default: &default
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
   timeout: 5000
   username: helpdesk
+  charset: utf8mb4
+  collation: utf8mb4_bin
+  encoding: utf8mb4
 
 development:
   <<: *default
