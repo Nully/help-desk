@@ -72,6 +72,8 @@ class IssuesController < ApplicationController
   end
 
   def find_tags
-    @tags = @issue.tags
+    @tags = TagDecorator.decorate_collection(
+      @issue.tags
+    )
   end
 end
