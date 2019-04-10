@@ -7,6 +7,8 @@ class Issue < ApplicationRecord
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
 
   has_many :comments
+  has_many :issue_tags
+  has_many :tags, through: :issue_tags
 
   validates :title, presence: true, length: { maximum: 255, minimum: 1 }
   validates :content, presence: true

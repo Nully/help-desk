@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_04_07_120838) do
+ActiveRecord::Schema.define(version: 2019_04_10_034626) do
 
   create_table "comments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin", force: :cascade do |t|
     t.bigint "issue_id", null: false
@@ -19,6 +19,16 @@ ActiveRecord::Schema.define(version: 2019_04_07_120838) do
     t.datetime "updated_at", precision: 6, null: false
     t.string "email", null: false
     t.index ["issue_id"], name: "index_comments_on_issue_id"
+  end
+
+  create_table "issue_tags", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin", force: :cascade do |t|
+    t.bigint "issue_id", null: false
+    t.bigint "tag_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["issue_id", "tag_id"], name: "index_issue_tags_on_issue_id_and_tag_id", unique: true
+    t.index ["issue_id"], name: "index_issue_tags_on_issue_id"
+    t.index ["tag_id"], name: "index_issue_tags_on_tag_id"
   end
 
   create_table "issues", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin", force: :cascade do |t|
@@ -31,5 +41,14 @@ ActiveRecord::Schema.define(version: 2019_04_07_120838) do
     t.integer "comment_count", default: 0, null: false
   end
 
+  create_table "tags", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin", force: :cascade do |t|
+    t.string "name", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["name"], name: "index_tags_on_name"
+  end
+
   add_foreign_key "comments", "issues"
+  add_foreign_key "issue_tags", "issues"
+  add_foreign_key "issue_tags", "tags"
 end
