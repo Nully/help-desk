@@ -23,7 +23,16 @@
                 </div>
             </div>
             <div class="col s3">
-                <h6>タグ</h6>
+                <div class="row">
+                    <div class="col s3">
+                        <h6>タグ</h6>
+                    </div>
+                    <div class="col s9">
+                        <a href="#" class="btn-small right z-depth-1">
+                            <i class="material-icons left">label</i>タグを登録
+                        </a>
+                    </div>
+                </div>
                 <% if @tags.blank? %>
                     <p>タグは設定されていません。</p>
                 <% else %>
