@@ -4,6 +4,7 @@ class IssuesController < ApplicationController
   before_action :build_comment, only: :show
   before_action :find_issue, only: %i[show update]
   before_action :find_comments, only: :show
+  before_action :find_tags, only: :show
 
   def index
   end
@@ -68,5 +69,9 @@ class IssuesController < ApplicationController
     @comments = CommentDecorator.decorate_collection(
       @issue.comments
     )
+  end
+
+  def find_tags
+    @tags = @issue.tags
   end
 end
