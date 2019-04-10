@@ -4,5 +4,5 @@ Rails.application.routes.draw do
 
   resources :issues
   resources :comments, only: [:create]
-  resources :tags, only: [:index, :show]
+  resources :tags, only: [:index, :show], param: :slug
 end

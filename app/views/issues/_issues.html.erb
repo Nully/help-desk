@@ -1,0 +1,29 @@
+<div class="col s12">
+    <% if issues.blank? %>
+        <p>質問はありません。</p>
+    <% else %>
+        <table class="striped">
+            <thead>
+                <tr>
+                    <th>No</th>
+                    <th>質問事項</th>
+                    <th>ステータス</th>
+                    <th>回答数</th>
+                </tr>
+            </thead>
+            <tbody>
+                <%- issues.each do |issue| %>
+                    <tr>
+                        <td><%= issue.id %></td>
+                        <td><%= link_to issue_path(issue) do %>
+                            <%= issue.title %>
+                        <%- end %></td>
+                        <td><%= issue.issue_state %></td>
+                        <td><%= issue.comment_count %></td>
+                    </tr>
+                <% end %>
+            </tbody>
+        </table>
+        <%= paginate issues %>
+    <% end %>
+</div>

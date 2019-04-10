@@ -11,32 +11,7 @@
 </div>
 
 <div class="row">
-    <div class="col s12">
-        <table class="striped">
-            <thead>
-                <tr>
-                    <th>No</th>
-                    <th>質問事項</th>
-                    <th>ステータス</th>
-                    <th>回答数</th>
-                </tr>
-            </thead>
-            <tbody>
-                <%- @issues.each do |issue| %>
-                    <tr>
-                        <td><%= issue.id %></td>
-                        <td><%= link_to issue_path(issue) do %>
-                            <%= issue.title %>
-                        <%- end %></td>
-                        <td><%= issue.issue_state %></td>
-                        <td><%= issue.comment_count %></td>
-                    </tr>
-                <% end %>
-            </tbody>
-        </table>
-
-        <%= paginate @issues %>
-    </div>
+    <%= render 'issues/issues', issues: @issues %>
 </div>
 
 <div class="fixed-action-btn">

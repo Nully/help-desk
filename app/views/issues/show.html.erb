@@ -17,19 +17,19 @@
                     <div class="divider"></div>
                 </div>
             </div>
-            <div class="col s8">
+            <div class="col s9">
                 <div class="content">
                     <%= @issue.content %>
                 </div>
             </div>
-            <div class="col s4">
+            <div class="col s3">
                 <h6>タグ</h6>
                 <% if @tags.blank? %>
                     <p>タグは設定されていません。</p>
                 <% else %>
                     <ul>
                     <%- @tags.each do |tag| %>
-                        <li class="left issue-tag"><%= link_to '#' do %>
+                        <li class="left issue-tag"><%= link_to tag_path(slug: tag.name) do %>
                             <%= tag.name %>
                         <% end %></li>
                     <% end %>

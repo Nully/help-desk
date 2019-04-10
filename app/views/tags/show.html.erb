@@ -1,0 +1,9 @@
+<div class="col s12">
+    <div class="section">
+        <h3><%= @tag.name %>が登録された質問一覧</h3>
+        <div class="divider"></div>
+        <div class="content">
+            <%= render 'issues/issues', issues: @issues %>
+        </div>
+    </div>
+</div>
